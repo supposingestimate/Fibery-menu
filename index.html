@@ -60,39 +60,45 @@
   <div class="menu-container">
 
     <button class="menu-button"
-      onclick="openTab('https://example.com')">
+      onclick="openExternal('https://example.com')">
       Dashboard
     </button>
 
     <button class="menu-button"
-      onclick="openTab('https://example.com')">
+      onclick="openExternal('https://example.com')">
       Analytics
     </button>
 
     <button class="menu-button"
-      onclick="openTab('https://example.com')">
+      onclick="openExternal('https://example.com')">
       Projects
     </button>
 
     <button class="menu-button"
-      onclick="openTab('https://example.com')">
+      onclick="openExternal('https://example.com')">
       Messages
     </button>
 
     <button class="menu-button"
-      onclick="openTab('https://example.com')">
+      onclick="openExternal('https://example.com')">
       Settings
     </button>
 
   </div>
 
   <script>
-    function openTab(url) {
-      const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    function openExternal(url) {
+      const link = document.createElement('a');
 
-      if (!newWindow) {
-        window.location.href = url;
-      }
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      document.body.removeChild(link);
     }
   </script>
 
