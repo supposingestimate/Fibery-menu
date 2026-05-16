@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Minimal Horizontal Menu</title>
+  <title>Horizontal Menu</title>
 
   <style>
     * {
@@ -31,20 +31,19 @@
     }
 
     .menu-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
       width: 120px;
       height: 46px;
 
+      border: none;
       border-radius: 12px;
+
       background: #1e293b;
       color: white;
 
       font-size: 18px;
       font-weight: 600;
-      text-decoration: none;
+
+      cursor: pointer;
 
       transition: all 0.2s ease;
     }
@@ -60,37 +59,42 @@
 
   <div class="menu-container">
 
-    <a class="menu-button"
-       href="https://example.com"
-       target="_top">
-       Dashboard
-    </a>
+    <button class="menu-button"
+      onclick="openTab('https://example.com')">
+      Dashboard
+    </button>
 
-    <a class="menu-button"
-       href="https://example.com"
-       target="_top">
-       Analytics
-    </a>
+    <button class="menu-button"
+      onclick="openTab('https://example.com')">
+      Analytics
+    </button>
 
-    <a class="menu-button"
-       href="https://example.com"
-       target="_top">
-       Projects
-    </a>
+    <button class="menu-button"
+      onclick="openTab('https://example.com')">
+      Projects
+    </button>
 
-    <a class="menu-button"
-       href="https://example.com"
-       target="_top">
-       Messages
-    </a>
+    <button class="menu-button"
+      onclick="openTab('https://example.com')">
+      Messages
+    </button>
 
-    <a class="menu-button"
-       href="https://example.com"
-       target="_top">
-       Settings
-    </a>
+    <button class="menu-button"
+      onclick="openTab('https://example.com')">
+      Settings
+    </button>
 
   </div>
+
+  <script>
+    function openTab(url) {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+
+      if (!newWindow) {
+        window.location.href = url;
+      }
+    }
+  </script>
 
 </body>
 </html>
