@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Minimal Horizontal Menu</title>
 
   <style>
@@ -14,32 +15,30 @@
     }
 
     body {
-      height: 100vh;
+      background: transparent;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: transparent;
+      padding: 10px;
     }
 
     .menu-container {
-      width: 95vw;
       display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 12px;
-      padding: 10px;
-      background: transparent;
     }
 
     .menu-button {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 120px;
-      height: 52px;
-      padding: 0 18px;
 
-      border-radius: 14px;
+      width: 120px;
+      height: 46px;
+
+      border-radius: 12px;
       background: #1e293b;
       color: white;
 
@@ -54,16 +53,6 @@
       background: #2563eb;
       transform: translateY(-2px);
     }
-
-    @media (max-width: 900px) {
-      .menu-container {
-        flex-wrap: wrap;
-      }
-
-      .menu-button {
-        min-width: 140px;
-      }
-    }
   </style>
 </head>
 
@@ -72,32 +61,32 @@
   <div class="menu-container">
 
     <a class="menu-button"
-       href="https://www.google.com/search?q=Dashboard"
-       target="_blank">
+       href="https://example.com"
+       target="_top">
        Dashboard
     </a>
 
     <a class="menu-button"
-       href="https://www.google.com/search?q=Analytics"
-       target="_blank">
+       href="https://example.com"
+       target="_top">
        Analytics
     </a>
 
     <a class="menu-button"
-       href="https://www.google.com/search?q=Projects"
-       target="_blank">
+       href="https://example.com"
+       target="_top">
        Projects
     </a>
 
     <a class="menu-button"
-       href="https://www.google.com/search?q=Messages"
-       target="_blank">
+       href="https://example.com"
+       target="_top">
        Messages
     </a>
 
     <a class="menu-button"
-       href="https://www.google.com/search?q=Settings"
-       target="_blank">
+       href="https://example.com"
+       target="_top">
        Settings
     </a>
 
