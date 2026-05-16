@@ -60,45 +60,57 @@
   <div class="menu-container">
 
     <button class="menu-button"
-      onclick="openExternal('https://example.com')">
+      onclick="openExternal(event, 'https://example.com')">
       Dashboard
     </button>
 
     <button class="menu-button"
-      onclick="openExternal('https://example.com')">
+      onclick="openExternal(event, 'https://example.com')">
       Analytics
     </button>
 
     <button class="menu-button"
-      onclick="openExternal('https://example.com')">
+      onclick="openExternal(event, 'https://example.com')">
       Projects
     </button>
 
     <button class="menu-button"
-      onclick="openExternal('https://example.com')">
+      onclick="openExternal(event, 'https://example.com')">
       Messages
     </button>
 
     <button class="menu-button"
-      onclick="openExternal('https://example.com')">
+      onclick="openExternal(event, 'https://example.com')">
       Settings
     </button>
 
   </div>
 
   <script>
-    function openExternal(url) {
-      const link = document.createElement('a');
+    function openExternal(event, url) {
 
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
+      // Stop iframe/page navigation
+      event.preventDefault();
+      event.stopPropagation();
 
-      document.body.appendChild(link);
+      // Open external tab
+      const newWindow = window.open(
+        url,
+        '_blank',
+        'noopener,noreferrer'
+      );
 
-      link.click();
+      // Reset iframe state immediately
+      setTimeout(() => {
+        window.history.pushState({}, '', window.location.pathname);
+      }, 10);
 
-      document.body.removeChild(link);
+      // Fallback if popup blocked
+      if (!newWindow) {
+        console.log('Popup blocked');
+      }
+
+      return false;
     }
   </script>
 
