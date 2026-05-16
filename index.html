@@ -1,168 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Embed Menu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Dashboard Menu</title>
+
   <style>
     * {
-      box-sizing: border-box;
-    }
-
-    body {
       margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #f8fafc;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
 
-    .dashboard-menu {
-      width: 100%;
-      max-width: 280px;
-      padding: 12px;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      background: #ffffff;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-    }
-
-    .menu-toggle {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 0;
-      border-radius: 14px;
-      padding: 10px 12px;
-      background: transparent;
-      color: #0f172a;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .menu-toggle:hover {
-      background: #f1f5f9;
-    }
-
-    .menu-icon {
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    .menu-list {
-      display: none;
-      margin-top: 8px;
-    }
-
-    .dashboard-menu.open .menu-list,
-    .dashboard-menu.open .menu-footer {
-      display: block;
-    }
-
-    .menu-link,
-    .logout-button {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 0;
-      border-radius: 14px;
-      padding: 10px 12px;
-      background: transparent;
-      color: #334155;
-      font-size: 14px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-
-    .menu-link:hover {
-      background: #f1f5f9;
-      color: #020617;
-    }
-
-    .menu-link.active {
+    body {
       background: #0f172a;
-      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
 
-    .link-icon {
-      width: 20px;
-      text-align: center;
+    .menu-container {
+      width: 95vw;
+      height: 160px;
+      background: #111827;
+      border-radius: 28px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
     }
 
-    .menu-footer {
-      display: none;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid #e2e8f0;
+    .menu-button {
+      flex: 1;
+      height: 100%;
+      border: none;
+      border-radius: 22px;
+      background: #1e293b;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      min-width: 120px;
     }
 
-    .logout-button:hover {
-      background: #fef2f2;
-      color: #dc2626;
+    .menu-button:hover {
+      background: #2563eb;
+      transform: translateY(-4px);
+    }
+
+    .menu-button:active {
+      transform: scale(0.98);
+    }
+
+    @media (max-width: 900px) {
+      .menu-container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .menu-button {
+        width: 100%;
+        height: 70px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <aside class="dashboard-menu" id="dashboardMenu">
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false">
-      <span>Dashboard Menu</span>
-      <span class="menu-icon" id="menuIcon">☰</span>
+
+  <div class="menu-container">
+
+    <button class="menu-button" onclick="openSearch('Dashboard Overview')">
+      Dashboard
     </button>
 
-    <nav class="menu-list" aria-label="Dashboard navigation">
-      <a class="menu-link active" href="#overview">
-        <span class="link-icon">⌂</span>
-        <span>Overview</span>
-      </a>
-      <a class="menu-link" href="#analytics">
-        <span class="link-icon">▣</span>
-        <span>Analytics</span>
-      </a>
-      <a class="menu-link" href="#alerts">
-        <span class="link-icon">●</span>
-        <span>Alerts</span>
-      </a>
-      <a class="menu-link" href="#profile">
-        <span class="link-icon">◉</span>
-        <span>Profile</span>
-      </a>
-      <a class="menu-link" href="#settings">
-        <span class="link-icon">⚙</span>
-        <span>Settings</span>
-      </a>
-    </nav>
+    <button class="menu-button" onclick="openSearch('Analytics Reports')">
+      Analytics
+    </button>
 
-    <div class="menu-footer">
-      <button class="logout-button" type="button">
-        <span class="link-icon">↪</span>
-        <span>Sign out</span>
-      </button>
-    </div>
-  </aside>
+    <button class="menu-button" onclick="openSearch('Project Tasks')">
+      Projects
+    </button>
+
+    <button class="menu-button" onclick="openSearch('Team Messages')">
+      Messages
+    </button>
+
+    <button class="menu-button" onclick="openSearch('Settings Panel')">
+      Settings
+    </button>
+
+  </div>
 
   <script>
-    const menu = document.getElementById("dashboardMenu");
-    const toggle = document.getElementById("menuToggle");
-    const icon = document.getElementById("menuIcon");
-    const links = document.querySelectorAll(".menu-link");
-
-    toggle.addEventListener("click", () => {
-      const isOpen = menu.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", isOpen);
-      icon.textContent = isOpen ? "×" : "☰";
-    });
-
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        links.forEach((item) => item.classList.remove("active"));
-        link.classList.add("active");
-      });
-    });
+    function openSearch(query) {
+      const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+      window.open(url, '_blank');
+    }
   </script>
+
 </body>
 </html>
